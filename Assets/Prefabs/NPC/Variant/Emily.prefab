@@ -1,0 +1,144 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!136 &525231119
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406894689918074660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.34
+  m_Height: 1.7
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.84, z: 0}
+--- !u!114 &525231114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406894689918074660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd66aed4ac51851489347cf52ecd47a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest:
+    uid: 
+    title: 
+    description: 
+    experience: 0
+    gold: 0
+    amount: 0
+    targets: []
+    talkTo: 
+    explore: {x: 0, y: 0, z: 0}
+    questGiver: 
+    type: 0
+  dialog:
+    welcomeText: this is Emily component
+    queries:
+    - text: Im looking for a job
+      answer:
+        text: there are 2 bandit in the town
+        forceDialogQuit: 1
+        questId: q-1
+      isAsked: 0
+      isAlwaysAsked: 0
+    - text: not your bussines
+      answer:
+        text: get lost
+        forceDialogQuit: 1
+        questId: 
+      isAsked: 0
+      isAlwaysAsked: 0
+    - text: good bye
+      answer:
+        text: cya
+        forceDialogQuit: 1
+        questId: q-2
+      isAsked: 0
+      isAlwaysAsked: 1
+--- !u!114 &525231115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8406894689918074660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f714917f5b15264c9dc44e92dfe88ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Uid: de7ad682-5638-4fe4-80b6-c75f3c03a02c
+--- !u!1001 &5086595117086957877
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.434
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.6486515
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7610856
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 99.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619906063959809553, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_Name
+      value: Emily
+      objectReference: {fileID: 0}
+    - target: {fileID: 4568067654891351078, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: questionCursor
+      value: 
+      objectReference: {fileID: 2800000, guid: cf26a967c41496945a70485621f50c81, type: 3}
+    m_RemovedComponents:
+    - {fileID: -7905836027571883518, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+--- !u!1 &8406894689918074660 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3619906063959809553, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+  m_PrefabInstance: {fileID: 5086595117086957877}
+  m_PrefabAsset: {fileID: 0}

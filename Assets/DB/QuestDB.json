@@ -1,0 +1,30 @@
+[
+  {
+    "uid": "q-1",
+    "title": "Annoying Bandits!",
+    "description": "Deafeat two bandit",
+    "experience": 100,
+    "gold": 5,
+    "amount": 2,
+    "targets": [
+      "b25a5d11-8279-417a-a3a3-197a7e012fad",
+      "351545cb-b1b0-462b-b437-cb93750f66e5" ],
+    "talkTo": null,
+    "explore": null,
+    "questGiver": "de7ad682-5638-4fe4-80b6-c75f3c03a02c",
+    "type": 0
+  },
+  {
+    "uid": "q-2",
+    "title": "Defeat the bandit leader!!!!",
+    "description": "Deafeat the leader bandit at own town",
+    "experience": 200,
+    "gold": 15,
+    "amount": 1,
+    "targets": [ "351545cb-b1b0-462b-b437-cb93750f66e5" ],
+    "talkTo": null,
+    "explore": null,
+    "questGiver": "b544ed5f-90ac-42b2-83c5-fd308e2e93e2",
+    "type": 0
+  }
+]

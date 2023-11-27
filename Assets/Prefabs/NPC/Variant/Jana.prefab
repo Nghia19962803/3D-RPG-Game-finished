@@ -1,0 +1,123 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!136 &7843638160696664721
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7795629777042786111}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  m_Radius: 0.5
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6256829902497505376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7795629777042786111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f714917f5b15264c9dc44e92dfe88ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Uid: b544ed5f-90ac-42b2-83c5-fd308e2e93e2
+--- !u!1001 &6779006610611935534
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -7905836027571883518, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: dialog.queries.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7905836027571883518, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: dialog.queries.Array.data[0].text
+      value: i hear you have some work
+      objectReference: {fileID: 0}
+    - target: {fileID: -7905836027571883518, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: dialog.queries.Array.data[1].text
+      value: see you
+      objectReference: {fileID: 0}
+    - target: {fileID: -7905836027571883518, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: dialog.queries.Array.data[0].answer.text
+      value: yes. we need to defeat the bandit leader
+      objectReference: {fileID: 0}
+    - target: {fileID: -7905836027571883518, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: dialog.queries.Array.data[1].answer.text
+      value: good bye!
+      objectReference: {fileID: 0}
+    - target: {fileID: -7905836027571883518, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: dialog.queries.Array.data[1].isAlwaysAsked
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7905836027571883518, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: dialog.queries.Array.data[0].answer.questId
+      value: q-2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7905836027571883518, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: dialog.queries.Array.data[1].answer.forceDialogQuit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3614449165555949787, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3619906063959809553, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+      propertyPath: m_Name
+      value: Jana
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+--- !u!1 &7795629777042786111 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3619906063959809553, guid: e705f666b630ab84f81060febf73b54a, type: 3}
+  m_PrefabInstance: {fileID: 6779006610611935534}
+  m_PrefabAsset: {fileID: 0}
