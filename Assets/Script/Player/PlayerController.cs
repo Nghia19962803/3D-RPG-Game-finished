@@ -48,7 +48,8 @@ namespace RpgAdventure
         private readonly int m_HashForwardSpeed = Animator.StringToHash("ForwardSpeed");
         private readonly int m_HashMeleeAttack = Animator.StringToHash("MeleeAttack");
         private readonly int m_HashDeath = Animator.StringToHash("Death");
-
+        private readonly int m_HashStateTime = Animator.StringToHash("StateTime");
+        
         // Animator Tag Hashes
         private readonly int m_HashBlockInput = Animator.StringToHash("BlockInput");
 
@@ -204,6 +205,9 @@ namespace RpgAdventure
             m_CurrentStateInfo = m_Animator.GetCurrentAnimatorStateInfo(0);
             m_NextStateInfo = m_Animator.GetCurrentAnimatorStateInfo(0);
             m_IsAnimatorTransitioning = m_Animator.IsInTransition(0);
+
+            m_Animator.SetFloat(m_HashStateTime, Mathf.Repeat(m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime, 1f));
+            m_Animator.ResetTrigger(m_HashMeleeAttack);
         }
         private void UpdateInputBlocking()
         {
