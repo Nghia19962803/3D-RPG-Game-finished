@@ -18,13 +18,13 @@ namespace RpgAdventure
 
         void Update()
         {
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonUp(0))
             {
                 freeLookCamera.m_XAxis.m_MaxSpeed = 400;
                 freeLookCamera.m_YAxis.m_MaxSpeed = 10;
             }
 
-            if (Input.GetMouseButtonUp(1))
+            if (Input.GetMouseButtonDown(0))
             {
                 freeLookCamera.m_XAxis.m_MaxSpeed = 0;
                 freeLookCamera.m_YAxis.m_MaxSpeed = 0;

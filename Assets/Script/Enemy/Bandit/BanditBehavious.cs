@@ -12,6 +12,9 @@ namespace RpgAdventure
         public float timeToStopPursuit = 2.0f;
         public float timeToWaitOnPursuit = 2.0f;
         public float attackDistance = 1.2f;
+        [Range(0.0f,2f)]
+        public float attackDelay;
+        private float timerDelayCount;
 
         public bool HasFollowTarget
         {
@@ -43,7 +46,7 @@ namespace RpgAdventure
             m_OriginPosition = transform.position;
             m_OriginRotation = transform.rotation;
             meleeWeapon.SetOwner(gameObject);
-            meleeWeapon.SetTargetLayer(1 << PlayerController.Instance.gameObject.layer);
+            //meleeWeapon.SetTargetLayer(1 << PlayerController.Instance.gameObject.layer);
         }
 
         private void Update()
@@ -55,6 +58,10 @@ namespace RpgAdventure
                 return;
             }
             GuardPosition();
+
+            timerDelayCount += Time.deltaTime;
+            if(timerDelayCount > attackDelay) 
+                timerDelayCount = attackDelay;
         }
 
         private void GuardPosition()
@@ -133,12 +140,22 @@ namespace RpgAdventure
                 toTargetRotation,
                 360 * Time.deltaTime);
 
-            m_EnemyController.StopFollowTarget();
-            m_EnemyController.Animator.SetTrigger(m_HashAttack);
+            //delay attack
+            if(timerDelayCount >= attackDelay)
+            {
+                m_EnemyController.StopFollowTarget();
+                m_EnemyController.Animator.SetTrigger(m_HashAttack);
+                timerDelayCount = 0;
+            }
+
+            //m_EnemyController.StopFollowTarget();
+            //m_EnemyController.Animator.SetTrigger(m_HashAttack);
         }
 
         private void FollowTarget()
         {
+            m_EnemyController.Animator.SetBool("DelayAttack", false);
+
             m_EnemyController.Animator.SetBool(m_HashInPursuit, true);
             m_EnemyController.FollowTarget(m_FollowTarget.transform.position);
         }
