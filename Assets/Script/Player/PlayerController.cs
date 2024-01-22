@@ -24,6 +24,15 @@ namespace RpgAdventure
         public float gravity = 20f;
         public Transform attackHand;
 
+        [Header("Vertical Speed Check")]
+        public float jumpSpeed = 10;
+        public float m_VerticalSpeed;
+        public bool m_IsGrounded;
+        public bool m_ReadyToJump;
+        private float k_StickingGravityProportion = 0.3f;
+        private bool m_InCombo;
+        private float k_JumpAbortSpeed = 10f;
+
         private static PlayerController s_Instance;
         private PlayerInput m_PlayerInput;
         private Damageable m_Damageable;
@@ -40,11 +49,12 @@ namespace RpgAdventure
 
         private float m_DesiredForwardSpeed;
         private float m_ForwardSpeed;
-        private float m_VerticalSpeed;
         const float k_Acceleration = 20f;
         const float k_Deceleration = 35f;
 
         // Animator parameter hashes
+        private readonly int m_HashAirborneVerticalSpeed = Animator.StringToHash("AirborneVerticalSpeed");
+        private readonly int m_HashGrounded = Animator.StringToHash("Grounded");
         private readonly int m_HashForwardSpeed = Animator.StringToHash("ForwardSpeed");
         private readonly int m_HashMeleeAttack = Animator.StringToHash("MeleeAttack");
         private readonly int m_HashDeath = Animator.StringToHash("Death");
@@ -96,9 +106,56 @@ namespace RpgAdventure
         {
             if (m_IsRespawning) { return; }
 
-            Vector3 movement = m_Animator.deltaPosition;
-            movement += m_VerticalSpeed * Vector3.up * Time.fixedDeltaTime;
+            // Vector3 movement = m_Animator.deltaPosition;
+            // movement += m_VerticalSpeed * Vector3.up * Time.fixedDeltaTime;
+            // m_ChController.Move(movement);
+
+            Vector3 movement;
+            if(m_IsGrounded)
+            {
+                RaycastHit hit;
+                Ray ray = new Ray(transform.position + Vector3.up * 0.5f, -Vector3.up);
+                if(Physics.Raycast(ray, out hit, 1, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+                {
+                    movement = Vector3.ProjectOnPlane(m_Animator.deltaPosition, hit.normal);
+
+                    Renderer groundRenderer = hit.collider.GetComponentInChildren<Renderer>();
+
+                    //// de sau
+                    //m_CurrentWalkingSurface = groundRenderer ? groundRenderer.sharedMaterial : null;
+                }
+                else
+                {
+                    movement = m_Animator.deltaPosition;
+
+                    //m_CurrentWalkingSurface = null;
+                }
+            }
+            else
+            {
+                // If not grounded the movement is just in the forward direction.
+                movement = m_ForwardSpeed * transform.forward * Time.deltaTime;
+            }
+
+            // Rotate the transform of the character controller by the animation's root rotation.
+            m_ChController.transform.rotation *= m_Animator.deltaRotation;
+
+            // Add to the movement with the calculated vertical speed.
+            movement += m_VerticalSpeed * Vector3.up * Time.deltaTime;
+
+            // Move the character controller.
             m_ChController.Move(movement);
+
+            // After the movement store whether or not the character controller is grounded.
+            m_IsGrounded = m_ChController.isGrounded;
+
+            // If Ellen is not on the ground then send the vertical speed to the animator.
+            // This is so the vertical speed is kept when landing so the correct landing animation is played.
+            if (!m_IsGrounded)
+                m_Animator.SetFloat(m_HashAirborneVerticalSpeed, m_VerticalSpeed);
+
+            // Send whether or not Ellen is on the ground to the animator.
+            m_Animator.SetBool(m_HashGrounded, m_IsGrounded);
         }
         public void OnReceiveMessage(MessageType type, object sender, object msg)
         {
@@ -153,13 +210,49 @@ namespace RpgAdventure
             meleeWeapon = Instantiate(slot.itemPrefab.transform)
                 .GetComponent<MeleeWeapon>();
             meleeWeapon.GetComponent<FixedFollow>().SetFolowee(attackHand);
-            Debug.Log("da cam item");
+            //Debug.Log("da cam item");
             meleeWeapon.name = slot.itemPrefab.name;
             meleeWeapon.SetOwner(gameObject);
         }
         private void ComputeVerticalMovement()
         {
-            m_VerticalSpeed = -gravity;
+            if(!m_PlayerInput.JumpInput && m_IsGrounded)
+                m_ReadyToJump = true;
+
+            if (m_IsGrounded)
+            {
+                // When grounded we apply a slight negative vertical speed to make Ellen "stick" to the ground.
+                m_VerticalSpeed = -gravity * k_StickingGravityProportion;
+
+                // If jump is held, Ellen is ready to jump and not currently in the middle of a melee combo...
+                if (m_PlayerInput.JumpInput && m_ReadyToJump)
+                {
+                    // ... then override the previously set vertical speed and make sure she cannot jump again.
+                    m_VerticalSpeed = jumpSpeed;
+                    m_IsGrounded = false;
+                    m_ReadyToJump = false;
+                }
+            }
+            else
+            {
+                // If Ellen is airborne, the jump button is not held and Ellen is currently moving upwards...
+                if (!m_PlayerInput.JumpInput && m_VerticalSpeed > 0.0f)
+                {
+                    // ... decrease Ellen's vertical speed.
+                    // This is what causes holding jump to jump higher that tapping jump.
+                    m_VerticalSpeed -= k_JumpAbortSpeed * Time.deltaTime;
+                }
+
+                // If a jump is approximately peaking, make it absolute.
+                if (Mathf.Approximately(m_VerticalSpeed, 0f))
+                {
+                    m_VerticalSpeed = 0f;
+                }
+
+                m_VerticalSpeed -= gravity * Time.deltaTime;
+            }
+
+            
         }
 
         private void ComputeForwardMovement()

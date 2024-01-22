@@ -49,6 +49,12 @@ namespace RpgAdventure
             }
         }
 
+        private bool m_Jump;
+        public bool JumpInput
+        {
+            get { return m_Jump && !isPlayerControllerInputBlocked; }
+        }
+
         private void Awake()
         {
             s_Instance = this;
@@ -72,6 +78,8 @@ namespace RpgAdventure
             {
                 HandleRightMouseBtnDown();
             }
+
+            m_Jump = Input.GetButton("Jump");
         }
 
         private void HandleLeftMouseBtnDown()

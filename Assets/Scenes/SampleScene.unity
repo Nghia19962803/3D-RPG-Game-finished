@@ -4376,6 +4376,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1593845346594653818, guid: a77833919af0c3e4798e613b7d77a958, type: 3}
+      propertyPath: m_Center.y
+      value: 0.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593845346594653818, guid: a77833919af0c3e4798e613b7d77a958, type: 3}
+      propertyPath: m_SkinWidth
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593845346594653818, guid: a77833919af0c3e4798e613b7d77a958, type: 3}
+      propertyPath: m_StepOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1593845346594653819, guid: a77833919af0c3e4798e613b7d77a958, type: 3}
+      propertyPath: gravity
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 9058192265726028459, guid: a77833919af0c3e4798e613b7d77a958, type: 3}
       propertyPath: maxHitPoints
       value: 10000
