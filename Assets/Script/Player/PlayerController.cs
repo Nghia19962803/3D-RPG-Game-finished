@@ -59,6 +59,7 @@ namespace RpgAdventure
         private readonly int m_HashMeleeAttack = Animator.StringToHash("MeleeAttack");
         private readonly int m_HashDeath = Animator.StringToHash("Death");
         private readonly int m_HashStateTime = Animator.StringToHash("StateTime");
+        private readonly int m_HashStateRoll = Animator.StringToHash("RollForward");
         
         // Animator Tag Hashes
         private readonly int m_HashBlockInput = Animator.StringToHash("BlockInput");
@@ -95,10 +96,17 @@ namespace RpgAdventure
             }
 
             m_Animator.ResetTrigger(m_HashMeleeAttack);
+            m_Animator.ResetTrigger(m_HashStateRoll);
             if (m_PlayerInput.IsAttack)
             {
                 //Debug.Log("Is attacking");
                 m_Animator.SetTrigger(m_HashMeleeAttack);
+            }
+
+            if (m_PlayerInput.RollForward)
+            {
+                //Debug.Log("Is attacking");
+                m_Animator.SetTrigger(m_HashStateRoll);
             }
         }
 

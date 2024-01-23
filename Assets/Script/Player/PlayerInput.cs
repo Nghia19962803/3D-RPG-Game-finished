@@ -20,6 +20,8 @@ namespace RpgAdventure
         private static PlayerInput s_Instance;
         private Vector3 m_Movement;
         private bool m_IsAttack;
+        private bool m_Jump;
+        private bool m_Roll;
         private Collider m_OptionClickTarget;
         public Collider OptionClickTarget { get { return m_OptionClickTarget; } }
         public Vector3 MoveInput
@@ -49,10 +51,14 @@ namespace RpgAdventure
             }
         }
 
-        private bool m_Jump;
         public bool JumpInput
         {
             get { return m_Jump && !isPlayerControllerInputBlocked; }
+        }
+
+        public bool RollForward
+        {
+            get { return m_Roll && !isPlayerControllerInputBlocked; }
         }
 
         private void Awake()
@@ -111,6 +117,12 @@ namespace RpgAdventure
             {
                 StartCoroutine(TriggerOptionTarget(hit.collider));
             }
+            
+            if (!m_Roll || !IsPointerOverUiElement())
+            {
+                StartCoroutine(TriggerRollForward());
+            }
+            
         }
         private IEnumerator TriggerOptionTarget(Collider other)
         {
@@ -123,6 +135,13 @@ namespace RpgAdventure
             m_IsAttack = true;
             yield return new WaitForSeconds(0.03f);
             m_IsAttack = false;
+        }
+
+        private IEnumerator TriggerRollForward()
+        {
+            m_Roll = true;
+            yield return new WaitForSeconds(0.03f);
+            m_Roll = false;
         }
     }
 }
