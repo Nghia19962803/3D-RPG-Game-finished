@@ -16,19 +16,19 @@ namespace RpgAdventure
             }
         }
 
-        void Update()
-        {
-            if (Input.GetMouseButtonUp(0))
-            {
-                freeLookCamera.m_XAxis.m_MaxSpeed = 400;
-                freeLookCamera.m_YAxis.m_MaxSpeed = 10;
-            }
+        //void Update()
+        //{
+        //    if (Input.GetMouseButtonUp(0))
+        //    {
+        //        freeLookCamera.m_XAxis.m_MaxSpeed = 400;
+        //        freeLookCamera.m_YAxis.m_MaxSpeed = 10;
+        //    }
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                freeLookCamera.m_XAxis.m_MaxSpeed = 0;
-                freeLookCamera.m_YAxis.m_MaxSpeed = 0;
-            }
-        }
+        //    if (Input.GetMouseButtonDown(0))
+        //    {
+        //        freeLookCamera.m_XAxis.m_MaxSpeed = 0;
+        //        freeLookCamera.m_YAxis.m_MaxSpeed = 0;
+        //    }
+        //}
     }
 }

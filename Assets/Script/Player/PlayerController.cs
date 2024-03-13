@@ -87,10 +87,12 @@ namespace RpgAdventure
             if (m_PlayerInput.IsMoveInput)
             {
                 float rotationSpeed = Mathf.Lerp(m_MaxRotationSpeed, m_MinRotationSpeed, m_ForwardSpeed / m_DesiredForwardSpeed);
-                m_TargetRotation = Quaternion.RotateTowards(
-                    transform.rotation,
-                    m_TargetRotation,
-                    rotationSpeed * Time.fixedDeltaTime);
+                //m_TargetRotation = Quaternion.RotateTowards(
+                //    transform.rotation,
+                //    m_TargetRotation,
+                //    rotationSpeed * Time.fixedDeltaTime);
+
+                m_TargetRotation = Quaternion.RotateTowards(transform.rotation, m_TargetRotation, 1000000);
 
                 transform.rotation = m_TargetRotation;
             }
@@ -108,6 +110,8 @@ namespace RpgAdventure
                 //Debug.Log("Is attacking");
                 m_Animator.SetTrigger(m_HashStateRoll);
             }
+
+
         }
 
         private void OnAnimatorMove()
@@ -164,6 +168,11 @@ namespace RpgAdventure
 
             // Send whether or not Ellen is on the ground to the animator.
             m_Animator.SetBool(m_HashGrounded, m_IsGrounded);
+
+            if (transform.position.z >= 0.05f || transform.position.z <= -0.05f)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+            }
         }
         public void OnReceiveMessage(MessageType type, object sender, object msg)
         {
@@ -274,7 +283,6 @@ namespace RpgAdventure
                 m_ForwardSpeed,
                 m_DesiredForwardSpeed,
                 Time.fixedDeltaTime * acceleration);
-
             m_Animator.SetFloat(m_HashForwardSpeed, m_ForwardSpeed);
         }
 
@@ -282,10 +290,12 @@ namespace RpgAdventure
         {
             Vector3 moveInput = m_PlayerInput.MoveInput.normalized;
 
-            Vector3 cameraDirection = Quaternion.Euler(
-                0,
-                m_CameraController.PlayerCam.m_XAxis.Value,
-                0) * Vector3.forward;
+            //Vector3 cameraDirection = Quaternion.Euler(
+            //    0,
+            //    m_CameraController.PlayerCam.m_XAxis.Value,
+            //    0) * Vector3.forward;
+            Vector3 cameraDirection = Vector3.forward;
+
 
             Quaternion targetRotation;
 
