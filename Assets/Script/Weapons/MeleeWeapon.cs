@@ -48,6 +48,7 @@ namespace RpgAdventure
                     for(int k = 0; k < contacts; k++)
                     {
                         Collider collider = m_RayCastHitCache[k].collider;
+                        Debug.Log(collider.gameObject.name);
 
                         if(collider != null)
                         {

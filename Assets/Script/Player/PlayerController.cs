@@ -179,7 +179,7 @@ namespace RpgAdventure
             if (type == MessageType.DAMAGED)
             {                          
                 m_HubManger.SetHealth((sender as Damageable).CurrentHitPoint);               
-                Debug.Log("Current health is: " + (sender as Damageable).CurrentHitPoint);
+                //Debug.Log("Current health is: " + (sender as Damageable).CurrentHitPoint);
             }
 
             if(type == MessageType.DEAD)
